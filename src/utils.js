@@ -46,8 +46,8 @@ export const useContainerQuery = (container, breakpoints) => {
 
   useEffect(() => {
     const current = container?.current;
-    if (observer?.current && container?.current) {
-      observer.current.unobserve(container?.current);
+    if (observer?.current && current) {
+      observer.current.unobserve(current);
     }
     observer.current = new ResizeObserver(handleResize);
     observe();
