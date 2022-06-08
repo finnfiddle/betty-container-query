@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React, { useRef } from 'react';
+
+import { useContainerQuery } from './utils';
 import './App.css';
 
+const BREAKPOINTS = {
+  small: window.innerWidth * 0.33,
+  medium: window.innerWidth * 0.5,
+  large: window.innerWidth * 0.66,
+};
+
 function App() {
+  const container = useRef(null);
+  const size = useContainerQuery(container, BREAKPOINTS);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="foo" ref={container}>
+      <h1>{size}</h1>
     </div>
   );
 }
